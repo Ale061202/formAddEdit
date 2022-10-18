@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personajes</title>
+  </head>
+  <body>
+    <h1 style="margin-left: 35%; color: yellow">Star Wars</h1>
+    <div>
+      <span *ngFor="let in of counter(); let i = index"
+        ><button (click)="getCharactersPage(i + 1)">{{ i + 1 }}</button></span
+      >
+    </div>
+    <div>
+      <mat-card class="example-card" *ngFor="let character of charactersList">
+        <mat-card-header>
+          <mat-card-title>{{ character.name }}</mat-card-title>
+        </mat-card-header>
+        <img
+          mat-card-image
+          width="250px"
+          height="300px"
+          [src]="getPhotoUrl(character)"
+          alt="Star Wars"
+        />
+      </mat-card>
+
+    </div>
+  </body>
+</html>
