@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { People } from 'src/app/interfaces/characters.interface';
 import { CharactersService } from 'src/app/services/characters-list.service';
 
@@ -9,17 +10,17 @@ import { CharactersService } from 'src/app/services/characters-list.service';
 })
 export class CharactersListComponent implements OnInit {
 
-  charactersList: CharactersListComponent[] = [];
+  charactersList: People[] = [];
   numPages = 0;
 
-  constructor(private charactersService: CharactersService) {}
+  constructor(private route: ActivatedRoute, private charactersService: CharactersService) {}
 
   ngOnInit(): void {
     this.getCharactersPage(1);
   }
 
   getCharactersPage(page: number) {
-    this.charactersService.getCharacters(page).subscribe((resp) => {
+    this.charactersService.getCharacters(page).subscribe(resp => {
       this.charactersList = resp.results;
       this.numPages = Math.ceil(resp.count / 10);
     });

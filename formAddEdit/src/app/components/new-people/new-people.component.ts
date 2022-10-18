@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-people',
@@ -26,7 +27,7 @@ export class NewPeopleComponent implements OnInit {
     weightFormControl: new FormControl(this.personWeight, [Validators.required, Validators.minLength(3)])
   })
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -8,7 +8,7 @@ import { NewPeopleComponent } from './components/new-people/new-people.component
 const routes: Routes = [
   {path: 'characters', component: CharactersListComponent,pathMatch: 'full'},
   {path: 'newPeople', component: NewPeopleComponent, pathMatch: 'full'},
-  {path: 'editPeople', component: EditPeopleComponent, pathMatch: 'full'},
+  {path: 'editPeople/:id', component: EditPeopleComponent, pathMatch: 'full'},
   {path: '' , redirectTo: '/characters', pathMatch: 'full'}
 ];
 

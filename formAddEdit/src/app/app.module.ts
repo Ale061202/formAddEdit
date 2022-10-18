@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialImportsModule } from './modules/material-imports.interface';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +22,7 @@ import { EditPeopleComponent } from './components/edit-people/edit-people.compon
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MaterialImportsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
