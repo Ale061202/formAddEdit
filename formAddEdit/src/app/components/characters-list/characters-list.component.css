@@ -17,3 +17,8 @@
     width: 100%;
     background-color: black;
   }
+
+  .pages{
+    float: right;
+    margin-right: 25px;
+  }

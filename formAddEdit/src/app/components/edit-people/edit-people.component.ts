@@ -34,7 +34,7 @@ export class EditPeopleComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.people$ = this.service.getCharacters(id)
+    //this.people$ = this.service.getCharacters(id)
   }
 
   onSubmit() {
