@@ -20,7 +20,7 @@ export class CharactersListComponent implements OnInit {
   }
 
   getCharactersPage(page: number) {
-    this.charactersService.getCharacters(page).subscribe(resp => {
+    this.charactersService.getCharactersPage(page).subscribe(resp => {
       this.charactersList = resp.results;
       this.numPages = Math.ceil(resp.count / 10);
     });

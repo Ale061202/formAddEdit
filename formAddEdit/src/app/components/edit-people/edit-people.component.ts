@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { People } from 'src/app/interfaces/characters.interface';
+import { CharactersService } from 'src/app/services/characters-list.service';
 
 @Component({
   selector: 'app-edit-people',
@@ -8,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-people.component.css']
 })
 export class EditPeopleComponent implements OnInit {
-
+  people$!: Observable<People>;
   personName: string = '';
   personEyes: string = '';
   personHair: string = '';
@@ -26,9 +29,12 @@ export class EditPeopleComponent implements OnInit {
     weightFormControl: new FormControl(this.personWeight, [Validators.required, Validators.minLength(3)])
   })
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private service: CharactersService) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.people$ = this.service.getCharacters(id)
   }
 
   onSubmit() {
