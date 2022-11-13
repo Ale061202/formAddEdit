@@ -10,29 +10,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NewPeopleComponent implements OnInit {
 
 
-  personName: string = '';
-  personEyes: string = '';
-  personHair: string = '';
-  personSkin: string = '';
-  personHeight: string = '';
-  personWeight: string = '';
-
+  personName: string | null = '';
+  personEyes: string | null = '';
+  personHair: string | null = '';
+  personSkin: string | null = '';
+  personHeight: string | null = '';
+  personWeight: string | null = '';
 
   addFormGroup = new FormGroup({
-    nameFormControl: new FormControl(this.personName, [Validators.required,Validators.minLength(4)]),
-    eyesFormControl: new FormControl(this.personEyes, [Validators.required,Validators.maxLength(9)]),
-    hairFormControl: new FormControl(this.personHair, Validators.required),
-    skinFormControl: new FormControl(this.personSkin, Validators.required),
-    heightFormControl: new FormControl(this.personHeight, [Validators.required, Validators.minLength(3)]),
-    weightFormControl: new FormControl(this.personWeight, [Validators.required, Validators.minLength(3)])
+    nameFormControl: new FormControl('',[Validators.required,Validators.minLength(4)]),
+    eyesFormControl: new FormControl('',[Validators.required,Validators.maxLength(9)]),
+    hairFormControl: new FormControl('',Validators.required),
+    skinFormControl: new FormControl('',Validators.required),
+    heightFormControl: new FormControl('',[Validators.required, Validators.minLength(3)]),
+    weightFormControl: new FormControl('',[Validators.required, Validators.minLength(3)])
   })
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     alert('Se envia el formulario de un nuevo personaje')
+    this.personName = this.addFormGroup.controls.nameFormControl.value;
+    this.personEyes = this.addFormGroup.controls.eyesFormControl.value;
+    this.personHair = this.addFormGroup.controls.hairFormControl.value;
+    this.personSkin = this.addFormGroup.controls.skinFormControl.value;
+    this.personHeight = this.addFormGroup.controls.heightFormControl.value;
+    this.personWeight = this.addFormGroup.controls.weightFormControl.value;
+    console.log(this.personName)
   }
 }

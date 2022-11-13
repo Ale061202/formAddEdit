@@ -1,4 +1,4 @@
-<form [formGroup]="addFormGroup" (ngSubmit)="onSubmit()">
+<form [formGroup]="addFormGroup">
     <label for="nombre">Nombre *</label>
     <input id="nombre" name="nombre" type="text" formControlName="nameFormControl" />
     <br/>
@@ -16,5 +16,5 @@
     <br/>
     <label for="peso">Peso *</label>
     <input id="peso" name="peso" type="text" formControlName="weightFormControl">
-    <input type="submit" routerLink="/characters" value="Add" [disabled]="!addFormGroup.valid" />
+    <input type="submit" routerLink="/characters" (click)="onSubmit()" [disabled]="!addFormGroup.valid" />
 </form>

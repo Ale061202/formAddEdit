@@ -34,4 +34,9 @@ export class CharactersListComponent implements OnInit {
     let id = characters.url.split('/').reverse()[1];
     return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
   }
+
+  getId(characters: People){
+    let id = characters.url.split('/').reverse()[1];
+    return id;
+  }
 }

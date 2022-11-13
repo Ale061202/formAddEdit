@@ -11,34 +11,33 @@ import { CharactersService } from 'src/app/services/characters-list.service';
   styleUrls: ['./edit-people.component.css']
 })
 export class EditPeopleComponent implements OnInit {
-  people$!: Observable<People>;
-  personName: string = '';
-  personEyes: string = '';
-  personHair: string = '';
-  personSkin: string = '';
-  personHeight: string = '';
-  personWeight: string = '';
+  
+  editedCharacter: People = {} as People;
+  editCharacter: FormGroup = {} as FormGroup;
 
-
-  editFormGroup = new FormGroup({
-    nameFormControl: new FormControl(this.personName, [Validators.required,Validators.minLength(4)]),
-    eyesFormControl: new FormControl(this.personEyes, [Validators.required,Validators.maxLength(9)]),
-    hairFormControl: new FormControl(this.personHair, Validators.required),
-    skinFormControl: new FormControl(this.personSkin, Validators.required),
-    heightFormControl: new FormControl(this.personHeight, [Validators.required, Validators.minLength(3)]),
-    weightFormControl: new FormControl(this.personWeight, [Validators.required, Validators.minLength(3)])
-  })
-
-  constructor(private route: ActivatedRoute, private router: Router, private service: CharactersService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private characterService: CharactersService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.formularioEditar();
+  }
 
-    //this.people$ = this.service.getCharacters(id)
+  formularioEditar(){
+    const personajeId = this.route.snapshot.paramMap.get('id')!;
+    this.characterService.getCharacters(personajeId).subscribe(resp => {
+      this.editedCharacter = resp;
+      this.editCharacter = new FormGroup({
+        nameFormControl: new FormControl(this.editedCharacter.name),
+        eyesFormControl: new FormControl(this.editedCharacter.eye_color),
+        hairFormControl: new FormControl(this.editedCharacter.hair_color),
+        skinFormControl: new FormControl(this.editedCharacter.skin_color),
+        heightFormControl: new FormControl(this.editedCharacter.height),
+        weightFormControl: new FormControl(this.editedCharacter.mass)
+      });
+    });
   }
 
   onSubmit() {
-    alert('Se envia el formulario de un nuevo personaje')
+    alert('Se envia el formulario de un personaje')
   }
 
 }

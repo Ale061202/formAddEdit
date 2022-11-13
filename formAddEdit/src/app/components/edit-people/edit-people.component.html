@@ -1,20 +1,20 @@
-<form [formGroup]="editFormGroup" (ngSubmit)="onSubmit()">
+<form [formGroup]="editCharacter">
     <label for="nombre">Nombre *</label>
-    <input id="nombre" name="nombre" type="text" formControlName="nameFormControl" />
+    <input id="nombre" name="nombre" type="text" formControlName="nameFormControl" [value]="editedCharacter.name"/>
     <br/>
     <label for="ojos">Color de ojos *</label>
-    <input id="ojos" name="ojos" type="text" formControlName="eyesFormControl" />
+    <input id="ojos" name="ojos" type="text" formControlName="eyesFormControl" [value]="editedCharacter.name"/>
     <br/>
     <label for="pelo">Color de pelo *</label>
-    <input id="pelo" name="pelo" type="text" formControlName="hairFormControl">
+    <input id="pelo" name="pelo" type="text" formControlName="hairFormControl" [value]="editedCharacter.name"/>
     <br/>
     <label for="piel">Color de piel *</label>
-    <input id="piel" name="piel" type="text" formControlName="skinFormControl">
+    <input id="piel" name="piel" type="text" formControlName="skinFormControl" [value]="editedCharacter.name"/>
     <br/>
     <label for="altura">Altura *</label>
-    <input id="altura" name="altura" type="text" formControlName="heightFormControl">
+    <input id="altura" name="altura" type="text" formControlName="heightFormControl" [value]="editedCharacter.name"/>
     <br/>
     <label for="peso">Peso *</label>
-    <input id="peso" name="peso" type="text" formControlName="weightFormControl">
-    <input type="submit" routerLink="/characters" value="Add" [disabled]="!editFormGroup.valid" />
+    <input id="peso" name="peso" type="text" formControlName="weightFormControl" [value]="editedCharacter.name"/>
+    <input type="submit" routerLink="/characters" (click)="onSubmit()" [disabled]="!editCharacter.valid" />
 </form>
